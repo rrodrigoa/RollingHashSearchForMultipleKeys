@@ -22,6 +22,7 @@ namespace RollingHash
         private int[] KeyToComplareHash;
         private int inputLegth;
 
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public RollingHash(string inputText)
         {
@@ -202,7 +203,7 @@ namespace RollingHash
             watch.Stop();            
 
             Console.WriteLine("Milliseconds for rolling hash = " + watch.ElapsedTicks);
-            
+    
             watch.Restart();
             inputText.IndexOf(key1); inputText.IndexOf(key2); inputText.IndexOf(key3); inputText.IndexOf(key4);
             inputText.IndexOf(key1); inputText.IndexOf(key2); inputText.IndexOf(key3); inputText.IndexOf(key4);
@@ -229,7 +230,7 @@ namespace RollingHash
             Console.WriteLine("Milliseconds for IndexOf = " + watch.ElapsedTicks);
 
             watch.Restart();
-            Regex reg = new Regex("(" + key1 + "|" + key2 + "|" + key3 + "|" + key4 + ")");
+            Regex reg = new Regex(key1 + "|" + key2 + "|" + key3 + "|" + key4);
             reg.Match(inputText);
             reg.Match(inputText);
             reg.Match(inputText);
@@ -253,6 +254,7 @@ namespace RollingHash
             watch.Stop();
 
             Console.WriteLine("Milliseconds for Regex = " + watch.ElapsedTicks);
+            Console.ReadLine();
         }
     }
 }
